@@ -1,4 +1,4 @@
-# essentials
+# Тестовое задание от ООО "ЛАРД"
 
 ## Project setup
 
