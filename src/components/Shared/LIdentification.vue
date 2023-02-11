@@ -30,19 +30,32 @@ const slug = computed(() => slugValidator[props.title]);
 
 
 <template>
-  <p
-    class="l-identification"
-  >
-    {{ icon }} {{ slug }} {{ id }}
-  </p>
+  <div class="l-identification">
+    <v-img
+      src="@/assets/images/russia.png"
+      width="20"
+      height="14"
+    />
+    <p
+      class="l-identification__info"
+    >
+      {{ slug }} {{ id }}
+    </p>
+  </div>
 </template> 
 
 <style lang="scss">
     // TODO: вынести цвета в переменные
     .l-identification {
+      display: flex;
+      align-items: center;
+
+      &__info {
+        margin-left: 10px;
         color: #041423;
         font-weight: 400;
         font-size: 14px;
         line-height: 120%;
+      }
     }
 </style>
