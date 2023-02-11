@@ -1,5 +1,5 @@
 <template>
-    <v-sheet class="l-sidebar" />
+  <v-sheet class="l-sidebar" />
 </template>
 
 <style lang="scss">

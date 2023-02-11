@@ -1,10 +1,7 @@
 <script setup>
-import LChip from '../Shared/LChip.vue';
+import LChipStatus from './LEmployee.vue';
 </script>
 
 <template>
-  <LChip
-    label="Что-нибудь"
-    status="problem"
-  />
+  <LChipStatus />
 </template>
