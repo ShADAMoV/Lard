@@ -32,7 +32,7 @@ defineProps({
         },
     },
     age: {
-      type: String,
+      type: Number,
       required: true,
     },
     gender: {
@@ -56,38 +56,85 @@ defineProps({
 
 <template>
   <section class="l-employee">
-    <h2 class="l-employee__name">
-      {{ fullName }}
-    </h2>
-    <LInn
-      :inn="inn"
-    />
-    <LContractType 
-      :type="contractType"
-    />
-    <p class="l-employee__label">
-      {{ position.name }}
-    </p>
-    <LIdentification 
-      :id="county.id"
-      :title="county.title"
-      :icon="county.icon"
-    />
-    <p class="l-employee__label">
-      {{ address }}
-    </p>
-    <p class="l-employee__label"> 
-      Дата рождения: {{ dateBirth }}
-    </p>
-    <p class="l-employee__label"> 
-      Возраст: {{ age }}
-    </p>
-    <p class="l-employee__label"> 
-      Пол: {{ gender.title }}
-    </p>
-    <LStatus
-      :label="status.description"
-      :status="status.tag.color"
-    />
+    <v-row
+      class="l-employee__row"
+      no-gutters
+    >
+      <h2 class="l-employee__name">
+        {{ fullName }}
+      </h2>
+      <LInn
+        :inn="inn"
+      />
+      <LContractType 
+        :type="contractType"
+      />
+      <p class="l-employee__label">
+        {{ position.name }}
+      </p>
+    </v-row>
+    <v-row
+      class="l-employee__row"
+      no-gutters
+    >
+      <LIdentification 
+        :id="county.id"
+        :title="county.title"
+        :icon="county.icon"
+      />
+      <div class="l-employee__separator" />
+      <p class="l-employee__label">
+        {{ address }}
+      </p>
+      <div class="l-employee__separator" />
+      <p class="l-employee__label"> 
+        Дата рождения: {{ dateBirth }}
+      </p>
+      <div class="l-employee__separator" />
+      <p class="l-employee__label"> 
+        Возраст: {{ age }}
+      </p>
+      <div class="l-employee__separator" />
+      <p class="l-employee__label"> 
+        Пол: {{ gender.title }}
+      </p>
+    </v-row>
+    <v-row
+      class="l-employee__row"
+      no-gutters
+    >
+      <LStatus
+        :label="status.description"
+        :status="status.tag.color"
+      />
+    </v-row>
   </section>
 </template>
+
+<style lang='scss'>
+  .l-employee {
+    padding: 25px;
+    background: #E7F3FF;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+
+    &__name {
+      font-weight: 600;
+      font-size: 18px;
+      line-height: 120%;
+      color: #2A358C;
+    }
+
+    &__row {
+      column-gap: 15px;
+      align-items: center;
+    }
+
+    &__separator {
+      border: 1px solid #CEDAE5;
+      height: 16px;
+    }
+  }
+</style>

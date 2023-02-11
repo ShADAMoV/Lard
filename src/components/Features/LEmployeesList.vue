@@ -2,7 +2,7 @@
 import LEmployee from '../Features/LEmployee.vue';
 
 const employee = {
-  full_name: 'Sadnev Adam Solomonovich',
+  full_name: 'Шаднев Адам Соломонович',
   inn: '1234567890',
   type_contract : {
     id: 1,
@@ -27,7 +27,7 @@ const employee = {
       id: 1,
       title: 'Проблемы',
       slug: 'пробл',
-      color: 'Оранжевый',
+      color: 'critical',
     },
     description: 'БОЧЁК ПОТИК',
   },

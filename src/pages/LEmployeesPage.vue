@@ -5,7 +5,7 @@ import LSidebar from '@/components/Widgets/LSidebar.vue';
 
 <template>
   <v-main class="l-employees-page">
-    <v-container>
+    <v-container fluid>
       <v-row>
         <v-col cols="8">
           <LEmployees />

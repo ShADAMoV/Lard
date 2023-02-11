@@ -11,5 +11,6 @@
 <style lang="scss">
 .l-employees {
     background-color: #FFFFFF;
+    padding: 30px 40px 60px;
 }
 </style>

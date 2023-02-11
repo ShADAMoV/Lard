@@ -9,6 +9,7 @@ defineProps({
 
 <template>
   <v-chip
+    label
     class="l-contract-type"
   >
     {{ type }}

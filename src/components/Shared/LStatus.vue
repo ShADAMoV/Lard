@@ -17,13 +17,14 @@ defineProps({
 <template>
   <v-chip
     :class="`l-status--${status}`"
+    label
     class="l-status"
   >
     {{ label }}
   </v-chip>
 </template> 
 
-<style lang="scss">
+<style lang="scss" scoped>
     // TODO: вынести цвета в переменные
     .l-status {
         color: #FFFFFF;
