@@ -1,6 +1,6 @@
 <script setup>
 defineProps({
-    label: {
+    inn: {
         type: String,
         required: true,
     },
@@ -9,16 +9,15 @@ defineProps({
 
 <template>
   <v-chip
-    label
-    class="l-chip-inn"
+    class="l-inn"
   >
-    ИНН {{ label }}
+    ИНН {{ inn }}
   </v-chip>
 </template> 
 
 <style lang="scss">
     // TODO: вынести цвета в переменные
-    .l-chip-inn {
+    .l-inn {
         color: #84909B;
         background-color: #FFFFFF;
         font-weight: 500;

@@ -16,9 +16,8 @@ defineProps({
 
 <template>
   <v-chip
-    :class="`l-chip-status__${status}`"
-    label
-    class="l-chip-status"
+    :class="`l-status--${status}`"
+    class="l-status"
   >
     {{ label }}
   </v-chip>
@@ -26,25 +25,25 @@ defineProps({
 
 <style lang="scss">
     // TODO: вынести цвета в переменные
-    .l-chip-status {
+    .l-status {
         color: #FFFFFF;
         font-weight: 500;
         font-size: 14px;
         line-height: 120%;
 
-        &__done {
+        &--done {
             background-color: #00AE5B;
         }
 
-        &__comment {
+        &--comment {
             background-color: #00B6ED;
         }
 
-        &__problem {
+        &--problem {
             background-color: #E2BD06;
         }
 
-        &__critical {
+        &--critical {
             background-color: #E52E2E;
         }
     }

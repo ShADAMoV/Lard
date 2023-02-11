@@ -1,6 +1,6 @@
 <script setup>
 defineProps({
-    label: {
+    type: {
         type: String,
         required: true,
     },
@@ -9,16 +9,15 @@ defineProps({
 
 <template>
   <v-chip
-    label
-    class="l-chip-contract-type"
+    class="l-contract-type"
   >
-    {{ label }}
+    {{ type }}
   </v-chip>
 </template> 
 
 <style lang="scss">
     // TODO: вынести цвета в переменные
-    .l-chip-contract-type {
+    .l-contract-type {
         color: #FFFFFF;
         background-color: #00AE5B;
         font-weight: 600;
