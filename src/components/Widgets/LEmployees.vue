@@ -3,14 +3,13 @@
 </script>
 
 <template>
-    <v-sheet class="l-employees">
-        <LEmployeesList></LEmployeesList>
-    </v-sheet>
+  <v-sheet class="l-employees">
+    <LEmployeesList />
+  </v-sheet>
 </template>
 
 <style lang="scss">
 .l-employees {
     background-color: #FFFFFF;
-    height: 100px;
 }
 </style>
