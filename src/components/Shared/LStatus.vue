@@ -8,22 +8,15 @@ defineProps({
         type: String,
         required: true,
         validator(value) {
-            return ['зеленый', 'голубой', 'желтый', 'красный'].includes(value);
+            return ['green', 'light-blue', 'yellow', 'red'].includes(value);
         },
     },
 });
-
-const classFromColor = {
-    'зеленый': 'green',
-    'голубой': 'light-blue',
-    'желтый': 'yellow',
-    'красный': 'red',
-};
 </script>
 
 <template>
   <v-chip
-    :class="`l-status--${classFromColor[status.toLowerCase()]}`"
+    :class="`l-status--${status}`"
     label
     class="l-status"
   >

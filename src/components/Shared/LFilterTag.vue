@@ -6,35 +6,28 @@ defineProps({
     },
     color: {
         type: String,
-        default: 'reset',
+        default: 'default',
+        validator(value) {
+            return ['green', 'light-blue', 'yellow', 'red'].includes(value);
+        },
     },
 });
-
-const colors = {
-    'желтый': 'yellow',
-    'красный': 'red',
-    'голубой': 'light-blue',
-    'зеленый': 'green',
-    'reset': 'reset',
-};
 </script>
 
 <template>
   <v-chip
-    :class="`l-filter-tag--${colors[color.toLowerCase()]}`"
+    :class="`l-filter-tag--${color}`"
+    class="l-filter-tag"
   >
     {{ title }}
   </v-chip>
 </template>
 
-<style lang="scss" scoped>
-    [class*='l-filter-tag--'] {
-        cursor: pointer;
-    }
-    
+<style lang="scss" scoped>   
     .l-filter-tag {
-
-        &--reset {
+        cursor: pointer;
+        
+        &--default {
             background: #B0BCC7;
             border: 1px solid #B0BCC7;
             font-size: 14px;
