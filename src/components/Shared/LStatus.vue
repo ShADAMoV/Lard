@@ -8,7 +8,7 @@ defineProps({
         type: String,
         required: true,
         validator(value) {
-            return ['done', 'comment', 'problem', 'critical'].includes(value);
+            return ['green', 'light-blue', 'yellow', 'red'].includes(value);
         },
     },
 });
@@ -32,19 +32,19 @@ defineProps({
         font-size: 14px;
         line-height: 120%;
 
-        &--done {
+        &--green {
             background-color: #00AE5B;
         }
 
-        &--comment {
+        &--light-blue {
             background-color: #00B6ED;
         }
 
-        &--problem {
+        &--yellow {
             background-color: #E2BD06;
         }
 
-        &--critical {
+        &--red {
             background-color: #E52E2E;
         }
     }
