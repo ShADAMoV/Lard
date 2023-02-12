@@ -12,16 +12,30 @@ const { employees } = storeToRefs(employeesStore);
 
 const searchEmployees = ref('');
 
-const filteredEmployees = computed(() => employees.value.filter((employee) => employee.full_name.toLowerCase().includes(searchEmployees.value.toLowerCase())));
+const filteredEmployees = computed(() =>
+  employees.value.filter((employee) =>
+    employee.full_name
+      .toLowerCase()
+      .includes(searchEmployees.value.toLowerCase()),
+  ),
+); 
 </script>
 
 <template>
   <v-sheet class="l-employees">
-    <LEmployeesSearch v-model="searchEmployees" class="l-employees__search" />
-    <hr class="l-employees__separator" />
-    <h1 class="l-employees__title">Список сотрудников</h1>
+    <LEmployeesSearch
+      v-model="searchEmployees"
+      class="l-employees__search"
+    />
+    <hr class="l-employees__separator">
+    <h1 class="l-employees__title">
+      Список сотрудников
+    </h1>
     <LFilterTagList class="l-employees__filter" />
-    <LEmployeesList :employees="filteredEmployees" class="l-employees__list" />
+    <LEmployeesList
+      :employees="filteredEmployees"
+      class="l-employees__list"
+    />
   </v-sheet>
 </template>
 
