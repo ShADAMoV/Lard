@@ -18,7 +18,7 @@ const filteredEmployees = computed(() =>
       .toLowerCase()
       .includes(searchEmployees.value.toLowerCase()),
   ),
-); 
+);
 </script>
 
 <template>
