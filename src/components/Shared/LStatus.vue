@@ -8,15 +8,22 @@ defineProps({
         type: String,
         required: true,
         validator(value) {
-            return ['done', 'comment', 'problem', 'critical'].includes(value);
+            return ['зеленый', 'голубой', 'желтый', 'красный'].includes(value);
         },
     },
 });
+
+const classFromColor = {
+    'зеленый': 'green',
+    'голубой': 'light-blue',
+    'желтый': 'yellow',
+    'красный': 'red',
+};
 </script>
 
 <template>
   <v-chip
-    :class="`l-status--${status}`"
+    :class="`l-status--${classFromColor[status.toLowerCase()]}`"
     label
     class="l-status"
   >
@@ -32,19 +39,19 @@ defineProps({
         font-size: 14px;
         line-height: 120%;
 
-        &--done {
+        &--green {
             background-color: #00AE5B;
         }
 
-        &--comment {
+        &--light-blue {
             background-color: #00B6ED;
         }
 
-        &--problem {
+        &--yellow {
             background-color: #E2BD06;
         }
 
-        &--critical {
+        &--red {
             background-color: #E52E2E;
         }
     }

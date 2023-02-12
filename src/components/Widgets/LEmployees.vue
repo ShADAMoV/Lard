@@ -1,13 +1,17 @@
 <script setup>
 import LEmployeesList from '../Features/LEmployeesList.vue';
 import LEmployeesSearch from '../Features/LEmployeesSearch.vue';
+import LEmployeesFilter from '../Features/LEmployeesFilter.vue';
 import { useEmployeesStore } from '@/store/employees';
+import { useFiltersStore } from '@/store/filters';
 import { storeToRefs } from 'pinia';
 import { ref, computed } from 'vue';
 
 const employeesStore = useEmployeesStore();
+const filtersStore = useFiltersStore();
 
 const { employees } = storeToRefs(employeesStore);
+const { filters } = storeToRefs(filtersStore);
 
 const searchEmployees = ref('');
 
@@ -21,6 +25,13 @@ const filteredEmployees = computed(() => employees.value.filter((employee) => em
       class="l-employees__search"
     />
     <hr class="l-employees__separator">
+    <h1 class="l-employees__title">
+      Список сотрудников
+    </h1>
+    <LEmployeesFilter 
+      :filters="filters"
+      class="l-employees__filter"
+    />
     <LEmployeesList
       :employees="filteredEmployees"
       class="l-employees__list"
@@ -28,27 +39,36 @@ const filteredEmployees = computed(() => employees.value.filter((employee) => em
   </v-sheet>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .l-employees {
     background-color: #FFFFFF;
-    padding: 30px 0 60px;
+    padding: 30px 40px 60px;
 
     &__search {
       margin-bottom: 30px;
-      padding-left: 40px;
-      padding-right: 40px;
     }
 
     &__separator {
       background-color: #DBE4ED; 
       height: 1px; 
       border: none;
+      margin: 0 -40px;
+    }
+
+    &__title {
+      margin-top: 30px;
+      font-weight: 600;
+      font-size: 26px;
+      line-height: 120%;
+      color: #041423;
+    }
+
+    &__filter {
+      margin-top: 20px;
     }
 
     &__list {
-      margin-top: 30px;
-      padding-left: 40px;
-      padding-right: 40px;
+      margin-top: 20px;
     }
 }
 </style>

@@ -28,3 +28,11 @@ defineProps({
     />
   </div>
 </template>
+
+<style lang="scss" scoped>
+  .l-employees-list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+  }
+</style>

@@ -32,7 +32,7 @@ const slug = computed(() => slugValidator[props.title]);
 <template>
   <div class="l-identification">
     <v-img
-      src="@/assets/images/russia.png"
+      :src="`src/assets${props.icon}`"
       width="20"
       height="14"
     />
