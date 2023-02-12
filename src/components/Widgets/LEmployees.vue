@@ -4,21 +4,10 @@ import LEmployeesSearch from '../Features/LEmployeesSearch.vue';
 import LFilterTagList from '../Features/LFilterTagList.vue';
 import { useEmployeesStore } from '@/store/employees';
 import { storeToRefs } from 'pinia';
-import { ref, computed } from 'vue';
 
 const employeesStore = useEmployeesStore();
 
-const { employees } = storeToRefs(employeesStore);
-
-const searchEmployees = ref('');
-
-const filteredEmployees = computed(() =>
-  employees.value.filter((employee) =>
-    employee.full_name
-      .toLowerCase()
-      .includes(searchEmployees.value.toLowerCase()),
-  ),
-);
+const { filteredEmployees, searchEmployees } = storeToRefs(employeesStore);
 </script>
 
 <template>

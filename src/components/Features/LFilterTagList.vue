@@ -1,32 +1,33 @@
 <script setup>
 import LFilterTag from '../Shared/LFilterTag.vue';
-const tags = [
+import { useEmployeesStore } from '@/store/employees';
+import { storeToRefs } from 'pinia';
+
+const employeesStore = useEmployeesStore();
+const { tags } = storeToRefs(employeesStore);
+const { resetTags } = employeesStore;
+
+const tagList = [
   {
     id: 0,
-    title: 'Весь список',
-    slug: 'Весь список',
-    color: 'default',
-  },
-  {
-    id: 1,
     title: 'Проблемные',
     slug: 'Пробл.',
     color: 'yellow',
-  },  
+  },
   {
-    id: 2,
+    id: 1,
     title: 'Критические',
     slug: 'Крит.',
     color: 'red',
   },
   {
-    id: 3,
+    id: 2,
     title: 'Есть замечания',
     slug: 'Замеч',
     color: 'light-blue',
   },
   {
-    id: 4,
+    id: 3,
     title: 'Выполнено',
     slug: 'Выполн',
     color: 'green',
@@ -37,11 +38,21 @@ const tags = [
 <template>
   <div class="l-filter-tag-list">
     <LFilterTag
-      v-for="tag in tags"
-      :key="tag.id"
-      :title="tag.title"
-      :color="tag.color"
+      title="Весь список"
+      @click="resetTags"
     />
+    <v-chip-group
+      v-model="tags"
+      multiple
+    >
+      <LFilterTag
+        v-for="tag in tagList"
+        :id="tag.id"
+        :key="tag.id"
+        :title="tag.title"
+        :color="tag.color"
+      />
+    </v-chip-group>
   </div>
 </template>
 
@@ -50,5 +61,6 @@ const tags = [
   margin-bottom: 20px;
   display: flex;
   column-gap: 10px;
+  align-items: center;
 }
 </style>
