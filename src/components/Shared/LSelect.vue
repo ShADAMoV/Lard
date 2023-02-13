@@ -32,7 +32,8 @@ const modelValue = useModelWrapper(props, emit);
     </h3>
     <v-select
       v-model="modelValue"
-      :label="label"
+      clearable
+      :placeholder="label"
       :items="options"
       item-title="title"
       item-value="id"

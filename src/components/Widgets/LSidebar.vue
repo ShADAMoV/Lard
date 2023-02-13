@@ -1,12 +1,20 @@
 <script setup>
 import LFilters from '@/components/Features/LFilters.vue';
 import LEmployeeAdd from '@/components/Features/LEmployeeAdd.vue';
+import { useEmployeesStore } from '@/store/employees';
+import { storeToRefs } from 'pinia';
+
+const employeesStore = useEmployeesStore();
+const { filters } = storeToRefs(employeesStore);
+
 </script>
 <template>
   <v-sheet class="l-sidebar">
     <LEmployeeAdd />
     <hr class="l-sidebar__separator">
-    <LFilters />
+    <LFilters
+      v-model:filters="filters"
+    />
   </v-sheet>
 </template>
 

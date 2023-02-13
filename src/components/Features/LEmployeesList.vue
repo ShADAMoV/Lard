@@ -14,7 +14,7 @@ defineProps({
   <div class="l-employees-list">
     <LEmployee
       v-for="employee in employees"
-      :key="employee.inn" 
+      :key="employee.inn"
       :full-name="employee.full_name"
       :inn="employee.inn"
       :contract-type="employee.type_contract.slug"
@@ -24,7 +24,7 @@ defineProps({
       :gender="employee.gender"
       :position="employee.position"
       :status="employee.status"
-      :county="employee.county"
+      :country="employee.country"
     />
   </div>
 </template>
