@@ -1,5 +1,7 @@
 <script setup>
-defineProps({
+import { useModelWrapper } from '@/composables/modelWrapper';
+
+const props = defineProps({
   label: {
     type: String,
     required: true,
@@ -12,11 +14,15 @@ defineProps({
     type: String,
     required: true,
   },
-  placeholder: {
-    type: String,
-    required: false,
+  modelValue: {
+    type: Number,
+    required: true,
   },
 });
+
+const emit = defineEmits(['update:modelValue']);
+
+const modelValue = useModelWrapper(props, emit);
 </script>
 
 <template>
@@ -25,8 +31,11 @@ defineProps({
       {{ title }}
     </h3>
     <v-select
+      v-model="modelValue"
       :label="label"
       :items="options"
+      item-title="title"
+      item-value="id"
       class="l-select__field"
       variant="solo"
     />
