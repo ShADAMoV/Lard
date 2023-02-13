@@ -1,11 +1,68 @@
 <script setup>
 import LSelect from '@/components/Shared/LSelect.vue';
-import LCheckbox from '@/components/Shared/LCheckbox.vue';
+import { useEmployeesStore } from '@/store/employees';
+import { storeToRefs } from 'pinia';
 
-const countyOptions = ['Все страны', 'Россия', 'Узбекистан', 'Таджикистан'];
-const genderOptions = ['Без разницы', 'Мужской', 'Женский'];
-const jobOptions = ['Все должности', 'Промышленный альпинист', 'Токарь', 'Пекарь'];
-const contractTypes = ['ТД', 'ГПХ', 'СМЗ', 'Кандидат'];
+const employeesStore = useEmployeesStore();
+
+const { country, gender, position, contractType } = storeToRefs(employeesStore);
+
+const countyOptions = [
+  {
+    id: 1,
+    title: 'Россия',
+  },
+  {
+    id: 2,
+    title: 'Узбекистан',
+  },
+  {
+    id: 3,
+    title: 'Таджикистан',
+  },
+  ];
+const genderOptions = [
+  {
+    id: 1,
+    title: 'Мужской',
+  },
+  {
+    id: 2,
+    title: 'Женский',
+  },
+];
+const jobOptions = [
+  {
+    id: 1,
+    title: 'Промышленный альпинист',
+  },
+  {
+    id: 2,
+    title: 'Токарь',
+  },
+  {
+    id: 3,
+    title: 'Пекарь',
+  },
+];
+const contractTypes = [
+  {
+    id: 0,
+    title: 'ТД',
+  },
+  {
+    id: 1,
+    title: 'ГПХ',
+  },
+  {
+    id: 2,
+    title: 'СМЗ',
+  },
+  {
+    id: 3,
+    title: 'Кандидат',
+  },
+];
 </script>
 <template>
   <div class="l-filters">
@@ -18,6 +75,7 @@ const contractTypes = ['ТД', 'ГПХ', 'СМЗ', 'Кандидат'];
     >
       <v-col>
         <LSelect
+          v-model="country"
           label="Все страны"
           title="Гражданство"
           :options="countyOptions"
@@ -25,6 +83,7 @@ const contractTypes = ['ТД', 'ГПХ', 'СМЗ', 'Кандидат'];
       </v-col>
       <v-col>
         <LSelect
+          v-model="gender"
           label="Без разницы"
           title="Пол"
           :options="genderOptions"
@@ -36,19 +95,21 @@ const contractTypes = ['ТД', 'ГПХ', 'СМЗ', 'Кандидат'];
     >
       <v-col>
         <LSelect
+          v-model="position"
           label="Без разницы"
           title="Должность"
           :options="jobOptions"
         />
       </v-col>
     </v-row>
-    <LCheckbox
-      v-for="(contract, index) of contractTypes"
-      :key="index"
-      :label="contract"
+    <v-checkbox
+      v-for="contract of contractTypes"
+      :key="contract.id"
+      v-model="contractType"
+      :label="contract.title"
+      :value="contract.id"
       color="light-blue"
       hide-details
-      class=""
     />
     <hr class="l-filters__separator">
     <v-row>

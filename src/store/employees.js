@@ -81,6 +81,10 @@ export const useEmployeesStore = defineStore('employees', {
     ],
     tags: [],
     searchEmployees: '',
+    country: null,
+    gender: null,
+    position: null,
+    contractType: [],
   }),
   getters: {
     filteredEmployees: (state) => state.employees.filter(employee => employee.full_name.toLowerCase().includes(state.searchEmployees.toLowerCase()) && (state.tags.includes(employee.status.tag.id) || state.tags.length === 0)),
