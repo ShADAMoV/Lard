@@ -47,7 +47,7 @@ defineProps({
       type: Object,
       required: true,
     },
-    county: {
+    country: {
       type: Object,
       required: true,
     },
@@ -66,7 +66,7 @@ defineProps({
       <LInn
         :inn="inn"
       />
-      <LContractType 
+      <LContractType
         :type="contractType"
       />
       <p class="l-employee__label">
@@ -77,25 +77,25 @@ defineProps({
       class="l-employee__row"
       no-gutters
     >
-      <LIdentification 
-        :id="county.id"
-        :title="county.title"
-        :icon="county.icon"
+      <LIdentification
+        :id="country.id"
+        :title="country.title"
+        :icon="country.icon"
       />
       <div class="l-employee__separator" />
       <p class="l-employee__label">
         {{ address }}
       </p>
       <div class="l-employee__separator" />
-      <p class="l-employee__label"> 
+      <p class="l-employee__label">
         Дата рождения: {{ dateBirth }}
       </p>
       <div class="l-employee__separator" />
-      <p class="l-employee__label"> 
+      <p class="l-employee__label">
         Возраст: {{ age }}
       </p>
       <div class="l-employee__separator" />
-      <p class="l-employee__label"> 
+      <p class="l-employee__label">
         Пол: {{ gender.title }}
       </p>
     </v-row>

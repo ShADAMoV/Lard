@@ -1,47 +1,51 @@
 <script setup>
 import LSelect from '@/components/Shared/LSelect.vue';
-import { useEmployeesStore } from '@/store/employees';
-import { storeToRefs } from 'pinia';
+import { ref, watch } from 'vue';
 
-const employeesStore = useEmployeesStore();
+const props = defineProps({
+  filters: {
+    type: Object,
+    required: true,
+  },
+});
 
-const { country, gender, position, contractType } = storeToRefs(employeesStore);
+const emit = defineEmits(['update:filters']);
 
-const countyOptions = [
+const countryOptions = [
   {
-    id: 1,
+    id: 0,
     title: 'Россия',
   },
   {
-    id: 2,
+    id: 1,
     title: 'Узбекистан',
   },
   {
-    id: 3,
+    id: 2,
     title: 'Таджикистан',
   },
   ];
 const genderOptions = [
   {
-    id: 1,
+    id: 0,
     title: 'Мужской',
   },
   {
-    id: 2,
+    id: 1,
     title: 'Женский',
   },
 ];
 const jobOptions = [
   {
-    id: 1,
+    id: 0,
     title: 'Промышленный альпинист',
   },
   {
-    id: 2,
+    id: 1,
     title: 'Токарь',
   },
   {
-    id: 3,
+    id: 2,
     title: 'Пекарь',
   },
 ];
@@ -63,6 +67,30 @@ const contractTypes = [
     title: 'Кандидат',
   },
 ];
+
+const filters = ref({ ...props.filters });
+
+watch(
+  () => props.filters,
+  (newFilters) => {
+    filters.value = { ...newFilters };
+  },
+  { deep: true },
+);
+
+const applyFilters = () => {
+  emit('update:filters', { ...filters.value });
+};
+const resetFilters = () => {
+  const filters = {
+    country: null,
+    gender: null,
+    position: null,
+    contractType: [],
+  };
+
+  emit('update:filters', filters);
+};
 </script>
 <template>
   <div class="l-filters">
@@ -75,15 +103,15 @@ const contractTypes = [
     >
       <v-col>
         <LSelect
-          v-model="country"
+          v-model="filters.country"
           label="Все страны"
           title="Гражданство"
-          :options="countyOptions"
+          :options="countryOptions"
         />
       </v-col>
       <v-col>
         <LSelect
-          v-model="gender"
+          v-model="filters.gender"
           label="Без разницы"
           title="Пол"
           :options="genderOptions"
@@ -95,7 +123,7 @@ const contractTypes = [
     >
       <v-col>
         <LSelect
-          v-model="position"
+          v-model="filters.position"
           label="Без разницы"
           title="Должность"
           :options="jobOptions"
@@ -105,7 +133,7 @@ const contractTypes = [
     <v-checkbox
       v-for="contract of contractTypes"
       :key="contract.id"
-      v-model="contractType"
+      v-model="filters.contractType"
       :label="contract.title"
       :value="contract.id"
       color="light-blue"
@@ -119,6 +147,7 @@ const contractTypes = [
           color="#00AE5B"
           class="l-filters__btn"
           block
+          @click="applyFilters"
         >
           Применить
         </v-btn>
@@ -129,6 +158,7 @@ const contractTypes = [
           color="#84909B"
           class="l-filters__btn"
           block
+          @click="resetFilters"
         >
           Очистить
         </v-btn>

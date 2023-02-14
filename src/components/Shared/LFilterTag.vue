@@ -8,7 +8,7 @@ defineProps({
     type: String,
     default: 'default',
     validator(value) {
-      return ['green', 'light-blue', 'yellow', 'red'].includes(value);
+      return ['green', 'light-blue', 'yellow', 'red', 'default'].includes(value);
     },
   },
   id: {

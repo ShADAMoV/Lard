@@ -22,7 +22,6 @@ const search = useModelWrapper(props, emit);
     class="l-employees-search"
     label="Поиск сотрудника"
     hint="Например: Иванов Иван Иванович"
-    :rules="rules"
     hide-details="auto"
     append-inner-icon="mdi-magnify"
     persistent-hint
