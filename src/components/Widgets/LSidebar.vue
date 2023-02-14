@@ -11,7 +11,7 @@ const { filters, employees } = storeToRefs(employeesStore);
 const isOpenDialog = ref(false);
 
 const createEmployee = (employee) => {
-  employees.value.unshift(employee);
+  employees.value = [employee, ...employees.value];
 };
 
 </script>
