@@ -7,7 +7,7 @@ import { storeToRefs } from 'pinia';
 
 const employeesStore = useEmployeesStore();
 
-const { filteredEmployees, searchEmployees } = storeToRefs(employeesStore);
+const { filteredEmployees, searchEmployees, visibleItems, slicedEmployees } = storeToRefs(employeesStore);
 </script>
 
 <template>
@@ -22,9 +22,23 @@ const { filteredEmployees, searchEmployees } = storeToRefs(employeesStore);
     </h1>
     <LFilterTagList class="l-employees__filter" />
     <LEmployeesList
-      :employees="filteredEmployees"
+      :employees="slicedEmployees"
       class="l-employees__list"
     />
+    <v-row
+      no-gutters
+    >
+      <v-btn
+        v-if="filteredEmployees.length > visibleItems"
+        color="#2A358C"
+        variant="outlined"
+        prepend-icon="mdi-autorenew"
+        class="l-employees__btn"
+        @click="visibleItems += 4"
+      >
+        Показать еще
+      </v-btn>
+    </v-row>
   </v-sheet>
 </template>
 
@@ -58,6 +72,10 @@ const { filteredEmployees, searchEmployees } = storeToRefs(employeesStore);
 
   &__list {
     margin-top: 20px;
+  }
+
+  &__btn {
+    margin: 20px auto 0;
   }
 }
 </style>
