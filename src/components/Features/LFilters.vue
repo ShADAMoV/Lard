@@ -1,6 +1,6 @@
 <script setup>
 import LSelect from '@/components/Shared/LSelect.vue';
-import { computed, ref, watch } from 'vue';
+import { ref, watch } from 'vue';
 
 const props = defineProps({
   filters: {
@@ -68,20 +68,28 @@ const contractTypes = [
   },
 ];
 
-const filters = computed(() => ({ ...props.filters }));
+const filters = ref({ ...props.filters });
 
-const a = ref({ ...props.filters });
+watch(
+  () => props.filters,
+  (newFilters) => {
+    filters.value = { ...newFilters };
+  },
+  { deep: true },
+);
+
 const applyFilters = () => {
   emit('update:filters', { ...filters.value });
 };
 const resetFilters = () => {
-  emit('update:filters',
-    {
+  const filters = {
     country: null,
     gender: null,
     position: null,
     contractType: [],
-  });
+  };
+
+  emit('update:filters', filters);
 };
 </script>
 <template>
