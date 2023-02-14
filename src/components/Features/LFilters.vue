@@ -1,6 +1,10 @@
 <script setup>
 import LSelect from '@/components/Shared/LSelect.vue';
 import { ref, watch } from 'vue';
+import { country } from '@/data/country';
+import { gender } from '@/data/gender';
+import { job } from '@/data/job';
+import { types } from '@/data/contract';
 
 const props = defineProps({
   filters: {
@@ -11,62 +15,6 @@ const props = defineProps({
 
 const emit = defineEmits(['update:filters']);
 
-const countryOptions = [
-  {
-    id: 0,
-    title: 'Россия',
-  },
-  {
-    id: 1,
-    title: 'Узбекистан',
-  },
-  {
-    id: 2,
-    title: 'Таджикистан',
-  },
-  ];
-const genderOptions = [
-  {
-    id: 0,
-    title: 'Мужской',
-  },
-  {
-    id: 1,
-    title: 'Женский',
-  },
-];
-const jobOptions = [
-  {
-    id: 0,
-    title: 'Промышленный альпинист',
-  },
-  {
-    id: 1,
-    title: 'Токарь',
-  },
-  {
-    id: 2,
-    title: 'Пекарь',
-  },
-];
-const contractTypes = [
-  {
-    id: 0,
-    title: 'ТД',
-  },
-  {
-    id: 1,
-    title: 'ГПХ',
-  },
-  {
-    id: 2,
-    title: 'СМЗ',
-  },
-  {
-    id: 3,
-    title: 'Кандидат',
-  },
-];
 
 const filters = ref({ ...props.filters });
 
@@ -106,7 +54,7 @@ const resetFilters = () => {
           v-model="filters.country"
           label="Все страны"
           title="Гражданство"
-          :options="countryOptions"
+          :options="country"
         />
       </v-col>
       <v-col>
@@ -114,7 +62,7 @@ const resetFilters = () => {
           v-model="filters.gender"
           label="Без разницы"
           title="Пол"
-          :options="genderOptions"
+          :options="gender"
         />
       </v-col>
     </v-row>
@@ -126,16 +74,16 @@ const resetFilters = () => {
           v-model="filters.position"
           label="Без разницы"
           title="Должность"
-          :options="jobOptions"
+          :options="job"
         />
       </v-col>
     </v-row>
     <v-checkbox
-      v-for="contract of contractTypes"
-      :key="contract.id"
+      v-for="contractType of types"
+      :key="contractType.id"
       v-model="filters.contractType"
-      :label="contract.title"
-      :value="contract.id"
+      :label="contractType.title"
+      :value="contractType.id"
       color="light-blue"
       hide-details
     />

@@ -15,8 +15,13 @@ const props = defineProps({
     required: true,
   },
   modelValue: {
-    type: Number,
+    type: [null, Number, Object],
     required: true,
+  },
+  fieldTitle: {
+    type: String,
+    default: 'title',
+    required: false,
   },
 });
 
@@ -35,10 +40,11 @@ const modelValue = useModelWrapper(props, emit);
       clearable
       :placeholder="label"
       :items="options"
-      item-title="title"
+      :item-title="fieldTitle"
       item-value="id"
       class="l-select__field"
       variant="solo"
+      return-object
     />
   </div>
 </template>
