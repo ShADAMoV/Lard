@@ -12,6 +12,8 @@ export const useEmployeesStore = defineStore('employees', {
       gender: null,
       position: null,
       contractType: [],
+      contractType1: [],
+      contractType2: [],
     },
     visibleItems: 4,
   }),
